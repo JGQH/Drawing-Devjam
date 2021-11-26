@@ -8,7 +8,7 @@ interface CanvasProps {
 }
 
 export default function Canvas(props:CanvasProps) {
-  const { color } = useDrawingContext()
+  const { color, size } = useDrawingContext()
   const [ canvasRef, mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
 
   function onDraw(e:MouseEvent<HTMLCanvasElement>){
@@ -25,7 +25,7 @@ export default function Canvas(props:CanvasProps) {
 
       context.fillStyle = color
       context.beginPath()
-      context.arc(mouseX, mouseY, 20, 0, Math.PI * 2, true)
+      context.arc(mouseX, mouseY, size, 0, Math.PI * 2, true)
       context.closePath()
       context.fill()
     }

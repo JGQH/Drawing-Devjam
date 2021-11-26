@@ -19,7 +19,8 @@
     "paths": {
       "@Components/*":[
         "src/components/Canvas/*",
-        "src/components/ColorPalette/*"
+        "src/components/ColorPalette/*",
+        "src/components/SizeControl/*"
       ],
       "@Hooks/*":[
         "src/hooks/*"
