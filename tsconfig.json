@@ -18,7 +18,8 @@
     "baseUrl": "./",
     "paths": {
       "@Components/*":[
-        "src/components/Canvas/*"
+        "src/components/Canvas/*",
+        "src/components/ColorPalette/*"
       ],
       "@Hooks/*":[
         "src/hooks/*"

@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react'
 import useCanvas from '@Hooks/useCanvas'
+import useDrawingContext from '@Hooks/useDrawingContext'
 
 interface CanvasProps {
   width: number
@@ -7,6 +8,7 @@ interface CanvasProps {
 }
 
 export default function Canvas(props:CanvasProps) {
+  const { color } = useDrawingContext()
   const [ canvasRef, mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
 
   function onDraw(e:MouseEvent<HTMLCanvasElement>){
@@ -21,7 +23,7 @@ export default function Canvas(props:CanvasProps) {
       const mouseY = e.clientY - top
 
 
-      context.fillStyle = '#000'
+      context.fillStyle = color
       context.beginPath()
       context.arc(mouseX, mouseY, 20, 0, Math.PI * 2, true)
       context.closePath()
