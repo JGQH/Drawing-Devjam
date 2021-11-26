@@ -21,7 +21,8 @@ This project is a project from [app-ideas](https://github.com/rickywid/app-ideas
 *\*WIP\**
 
 ## To-Do
-- An actual canvas
 - Color palette
 - Size controllers
+- Styling
 - "Clear" button
+- Fix spacing when mouse moves fast

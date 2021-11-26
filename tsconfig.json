@@ -14,7 +14,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@Components/*":[
+        "src/components/Canvas/*"
+      ],
+      "@Hooks/*":[
+        "src/hooks/*"
+      ]
+    }
   },
   "include": ["./src"]
 }
