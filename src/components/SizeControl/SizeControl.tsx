@@ -5,7 +5,7 @@ export default function SizeControl() {
   const { size, setSize } = useDrawingContext()
 
   return (
-    <div>
+    <div className='sizecontrol-component'>
       <input type='range' min='5' max='50' defaultValue='20' onChange={e => setSize(+e.target.value)} />
       <div>Size: {size}</div>
     </div>

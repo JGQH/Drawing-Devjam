@@ -13,7 +13,7 @@ export default function ColorPalette() {
   }
 
   return (
-    <div>
+    <div className='colorpalette-component'>
       {array.map((color, i) => 
         <div key={i} onClick={() => setColor(color)}>{color}</div>
       )}

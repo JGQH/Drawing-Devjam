@@ -31,5 +31,9 @@ export default function Canvas(props:CanvasProps) {
     }
   }
 
-  return <canvas ref={canvasRef} {...props} onMouseUp={setMouseUp} onMouseDown={setMouseDown} onMouseMove={e => mouseIsDown && onDraw(e)} ></canvas>
+  return (
+    <div className='canvas-component'>
+      <canvas ref={canvasRef} {...props} onMouseUp={setMouseUp} onMouseDown={setMouseDown} onMouseMove={e => mouseIsDown && onDraw(e)} ></canvas>
+    </div>
+  )
 }

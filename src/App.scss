@@ -1,0 +1,33 @@
+
+
+#root {
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background: linear-gradient(to top right, rgba(53,46,115,1) 0%, rgba(67,105,152,1) 100%); ;
+
+  .sizecontrol-component, .canvas-component, .colorpalette-component {
+    align-self: center;
+
+    //Courtetsy of https://hype4.academy/tools/glassmorphism-generator
+    background: rgba( 0, 0, 0, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 1rem );
+    border-radius: 1rem;
+    border: 1px solid rgba( 0, 0, 0, 0.18 );
+  }
+
+  .sizecontrol-component {
+    justify-self: left;
+  }
+
+  .canvas-component {
+    justify-self: center;
+  }
+
+  .colorpalette-component {
+    justify-self: right;
+  }
+}

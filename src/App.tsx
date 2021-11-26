@@ -3,6 +3,7 @@ import Canvas from '@Components/Canvas'
 import { DrawingContextProvider } from '@Hooks/useDrawingContext'
 import ColorPalette from '@Components/ColorPalette'
 import SizeControl from '@Components/SizeControl'
+import './App.scss'
 
 export default function App() {
   const [ color, setColor ] = useState('#000000')
@@ -10,11 +11,9 @@ export default function App() {
 
   return (
     <DrawingContextProvider value={{ color, setColor, size, setSize }}>
-    <div>
       <ColorPalette />
-      <Canvas width={500} height={500} />
+      <Canvas width={750} height={750} />
       <SizeControl />
-    </div>
     </DrawingContextProvider>
   )
 }
