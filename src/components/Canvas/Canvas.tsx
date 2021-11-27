@@ -3,39 +3,55 @@ import useCanvas from '@Hooks/useCanvas'
 import useDrawingContext from '@Hooks/useDrawingContext'
 import styles from './Canvas.module.scss'
 
-interface CanvasProps {
-  width: number
-  height: number
-}
-
-export default function Canvas(props:CanvasProps) {
+export default function Canvas() {
   const className = ['canvas-component', 'drawing-component', styles.container].join(' ')
-  const { color, size, canvasRef } = useDrawingContext()
-  const [ mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
+  const { width, height, color, size, canvasRef } = useDrawingContext()
+  const [ lastPosition, mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
 
   function onDraw(e:MouseEvent<HTMLCanvasElement>){
     const canvas = canvasRef.current
-
     if(!canvas) return
 
-    const context = canvas.getContext('2d')
-    if(context) {
-      const { left, top } = canvas.getBoundingClientRect()
-      const mouseX = e.clientX - left
-      const mouseY = e.clientY - top
+    //Check mouse position, and update last mouse position
+    const { left, top } = canvas.getBoundingClientRect()
+    const x = e.clientX - left
+    const y = e.clientY - top
 
+    if(lastPosition.current) {
+      const context = canvas.getContext('2d')
 
-      context.fillStyle = color
-      context.beginPath()
-      context.arc(mouseX, mouseY, size, 0, Math.PI * 2, true)
-      context.closePath()
-      context.fill()
+      if(context) {
+        
+        context.fillStyle = color
+        context.beginPath()
+        context.arc(lastPosition.current.x, lastPosition.current.y, size / 2, 0, 2 * Math.PI, true)
+        context.arc(x, y, size / 2, 0, 2 * Math.PI, true)
+        context.closePath()
+        context.fill()
+
+        context.beginPath()
+        context.strokeStyle = color
+        context.lineWidth = size
+        context.moveTo(lastPosition.current.x, lastPosition.current.y)
+        context.lineTo(x, y)
+        context.closePath()
+        context.stroke()
+      }
     }
+    lastPosition.current = { x, y }
   }
 
   return (
     <div {...{ className }}>
-      <canvas ref={canvasRef} className={styles.canvas} {...props} onMouseUp={setMouseUp} onMouseDown={setMouseDown} onMouseMove={e => mouseIsDown && onDraw(e)} />
+      <canvas
+        width={width}
+        height={height}
+        ref={canvasRef}
+        className={styles.canvas}
+        onMouseUp={setMouseUp}
+        onMouseDown={setMouseDown}
+        onMouseMove={e => mouseIsDown && onDraw(e)}
+        onMouseLeave={() => lastPosition.current = undefined} />
     </div>
   )
 }

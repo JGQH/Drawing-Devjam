@@ -2,10 +2,12 @@ import { createContext, useContext } from 'react'
 import type { Dispatch, SetStateAction, RefObject } from 'react'
 
 interface DrawingContextInterface {
-  color: string,
-  setColor: Dispatch<SetStateAction<string>>,
-  size: number,
-  setSize: Dispatch<SetStateAction<number>>,
+  width: number
+  height: number
+  color: string
+  setColor: Dispatch<SetStateAction<string>>
+  size: number
+  setSize: Dispatch<SetStateAction<number>>
   canvasRef: RefObject<HTMLCanvasElement>
 }
 
