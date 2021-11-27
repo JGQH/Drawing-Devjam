@@ -13,5 +13,5 @@ export default function useDebounce<T>(initialValue:T, delay:number = 500) {
     return () => clearTimeout(timer)
   }, [value, delay])
 
-  return [ debouncedValue, setValue ] as const
+  return [ debouncedValue, value !== debouncedValue, setValue ] as const
 }

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .container {
   display: flex;
   flex-flow: row;
@@ -8,7 +10,7 @@
   padding: .5rem;
   gap: .5rem;
 
-  .button {
+  button {
     cursor: pointer;
     flex-basis: 25%;
     border: 3px solid #00000055;
@@ -19,6 +21,43 @@
 
     &.selected {
       box-shadow: 0 0 .5rem var(--button-color);
+    }
+  }
+
+  #adderButton {
+    position: relative;
+    border: 3px solid #000;
+    opacity: 50%;
+
+    $width: 5%;
+    $size: 40%;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      background-color: #000;
+    }
+
+    &::before {
+      top: 50% - math.div($size, 2);
+      left: 50% - math.div($width, 2);
+
+      width: $width;
+      height: $size;
+    }
+
+    &::after {
+      top: 50% - math.div($width, 2);
+      left: 50% - math.div($size, 2);
+
+      width: $size;
+      height: $width;
+    }
+
+    transition: opacity .25s;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 25%;
     }
   }
 

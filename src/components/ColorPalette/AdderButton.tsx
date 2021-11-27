@@ -3,10 +3,11 @@ import useDrawingContext from '@Hooks/useDrawingContext'
 import styles from './ColorPalette.module.scss'
 
 interface AdderButtonProps {
+  updating: boolean
   push: (element:string) => void
 }
 
-export default function AdderButton({ push }:AdderButtonProps) {
+export default function AdderButton({ updating, push }:AdderButtonProps) {
   const hiddenInput = useRef<HTMLInputElement>(null)
   const { setColor } = useDrawingContext()
 
@@ -18,9 +19,7 @@ export default function AdderButton({ push }:AdderButtonProps) {
 
   return (
     <>
-      <button className={styles.button} onClick={() => hiddenInput.current?.click()}>
-        +
-      </button>
+      <button id={styles.adderButton} onClick={() => hiddenInput.current?.click()} disabled={updating} />
       <input ref={hiddenInput} type='color' onChange={e => doPush(e.target.value)} />
     </>
   )

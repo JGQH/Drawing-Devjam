@@ -1,7 +1,7 @@
 import useDebounce from './useDebounce'
 
 export default function useArray<T>(initialValues:T[] = []) {
-  const [ list, setList ] = useDebounce<T[]>(initialValues, 1000)
+  const [ list, updating, setList ] = useDebounce<T[]>(initialValues, 750)
   
   function push(element:T) {
     setList([...list, element])
@@ -13,5 +13,5 @@ export default function useArray<T>(initialValues:T[] = []) {
     }
   }
 
-  return [ list, push, pop] as const
+  return [ list, updating, push, pop] as const
 }

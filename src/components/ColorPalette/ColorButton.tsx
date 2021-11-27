@@ -22,7 +22,7 @@ export default function ColorButton({ color, pop }:ColorButtonProps) {
   return (
     <button
       style={{ '--button-color': color } as CSSProperties}
-      className={`${styles.button} ${isSelected && styles.selected}`}
+      className={isSelected ? styles.selected : undefined}
       onClick={() => setColor(color)}
       onContextMenu={doPop} />
   )
