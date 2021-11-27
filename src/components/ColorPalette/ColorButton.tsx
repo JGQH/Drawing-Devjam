@@ -1,20 +1,29 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, MouseEvent } from 'react'
 import useDrawingContext from '@Hooks/useDrawingContext'
 import styles from './ColorPalette.module.scss'
 
 interface ColorButtonProps {
-  color: string
+  color: string,
+  pop: (element:string) => void
 }
 
-export default function ColorButton({ color }:ColorButtonProps) {
+export default function ColorButton({ color, pop }:ColorButtonProps) {
   const { color:brushColor , setColor } = useDrawingContext()
   const isSelected = brushColor === color
 
-  function doSetColor() {
-    setColor(color)
+  function doPop(e:MouseEvent<HTMLButtonElement>) {
+    e.preventDefault()
+    if(isSelected) {
+      setColor('#0000')
+    }
+    pop(color)
   }
   
   return (
-    <button className={`${styles.button} ${isSelected && styles.selected}`} onClick={doSetColor} style={{ '--button-color': color } as CSSProperties} />
+    <button
+      style={{ '--button-color': color } as CSSProperties}
+      className={`${styles.button} ${isSelected && styles.selected}`}
+      onClick={() => setColor(color)}
+      onContextMenu={doPop} />
   )
 }

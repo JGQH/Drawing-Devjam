@@ -7,5 +7,11 @@ export default function useArray<T>(initialValues:T[] = []) {
     setList([...list, element])
   }
 
-  return [ list, push ] as const
+  function pop(element:T) {
+    if(list.length > 1) {
+      setList(list.filter(elem => elem !== element))
+    }
+  }
+
+  return [ list, push, pop] as const
 }
