@@ -14,9 +14,23 @@ export default function ActionPanel() {
     }
   }
 
+  function downloadCanvas() {
+    const canvas = canvasRef.current
+
+    if(canvas) {
+      const image = canvas.toDataURL()
+
+      const link = document.createElement('a')
+      link.href = image
+      link.download = 'drawing-app.png'
+      link.click()
+    }
+  }
+
   return (
     <div {...{ className }}>
       <button className='drawing-component' onClick={clearCanvas}>Clear</button>
+      <button className='drawing-component' onClick={downloadCanvas}>Download</button>
     </div>
   )
 }

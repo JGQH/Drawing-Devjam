@@ -4,7 +4,7 @@ import { DrawingContextProvider } from '@Hooks/useDrawingContext'
 import ColorPalette from '@Components/ColorPalette'
 import SizeControl from '@Components/SizeControl'
 import './App.scss'
-import ActionPanel from './components/ActionPanel/ActionPanel'
+import ActionPanel from '@Components/ActionPanel'
 
 export default function App() {
   const [ color, setColor ] = useState('#000000')

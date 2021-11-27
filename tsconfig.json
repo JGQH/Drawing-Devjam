@@ -20,7 +20,8 @@
       "@Components/*":[
         "src/components/Canvas/*",
         "src/components/ColorPalette/*",
-        "src/components/SizeControl/*"
+        "src/components/SizeControl/*",
+        "src/components/ActionPanel/*"
       ],
       "@Hooks/*":[
         "src/hooks/*"
