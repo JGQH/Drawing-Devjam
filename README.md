@@ -23,5 +23,4 @@ This project is a project from [app-ideas](https://github.com/rickywid/app-ideas
 ## To-Do
 - Styling
 - Fix spacing when mouse moves fast
-- Change size visualizer
 - Option to remove color
