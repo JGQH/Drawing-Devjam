@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 75%;
+
+  padding: .5rem;
+  gap: .5rem;
+
+  .button {
+    cursor: pointer;
+    flex-basis: 25%;
+    border: 3px solid #00000055;
+    background-color: var(--button-color);
+    border-radius: 20%;
+
+    aspect-ratio: 1;
+
+    &.selected {
+      box-shadow: 0 0 .5rem var(--button-color);
+    }
+  }
+
+  input {
+    display: none;
+  }
+}
