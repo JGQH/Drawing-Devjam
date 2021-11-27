@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import useDebounce from './useDebounce'
 
 export default function useArray<T>(initialValues:T[] = []) {
-  const [ list, setList ] = useState<T[]>(initialValues)
+  const [ list, setList ] = useDebounce<T[]>(initialValues, 1000)
   
   function push(element:T) {
     setList([...list, element])
