@@ -1,19 +1,15 @@
 import { createContext, useContext } from 'react'
-import type { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction, RefObject } from 'react'
 
 interface DrawingContextInterface {
   color: string,
   setColor: Dispatch<SetStateAction<string>>,
   size: number,
-  setSize: Dispatch<SetStateAction<number>>
+  setSize: Dispatch<SetStateAction<number>>,
+  canvasRef: RefObject<HTMLCanvasElement>
 }
 
-const DrawingContext = createContext<DrawingContextInterface>({
-  color: '#000000',
-  setColor: () => {},
-  size: 20,
-  setSize: () => {}
-})
+const DrawingContext = createContext<DrawingContextInterface>({} as DrawingContextInterface) //The values are set as soon as the website starts anyway
 
 export const DrawingContextProvider = DrawingContext.Provider
 

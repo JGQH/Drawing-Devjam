@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react'
 import useCanvas from '@Hooks/useCanvas'
 import useDrawingContext from '@Hooks/useDrawingContext'
+import styles from './Canvas.module.scss'
 
 interface CanvasProps {
   width: number
@@ -8,8 +9,9 @@ interface CanvasProps {
 }
 
 export default function Canvas(props:CanvasProps) {
-  const { color, size } = useDrawingContext()
-  const [ canvasRef, mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
+  const className = ['canvas-component', 'drawing-component', styles.container].join(' ')
+  const { color, size, canvasRef } = useDrawingContext()
+  const [ mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
 
   function onDraw(e:MouseEvent<HTMLCanvasElement>){
     const canvas = canvasRef.current
@@ -32,8 +34,8 @@ export default function Canvas(props:CanvasProps) {
   }
 
   return (
-    <div className='canvas-component'>
-      <canvas ref={canvasRef} {...props} onMouseUp={setMouseUp} onMouseDown={setMouseDown} onMouseMove={e => mouseIsDown && onDraw(e)} ></canvas>
+    <div {...{ className }}>
+      <canvas ref={canvasRef} className={styles.canvas} {...props} onMouseUp={setMouseUp} onMouseDown={setMouseDown} onMouseMove={e => mouseIsDown && onDraw(e)} />
     </div>
   )
 }

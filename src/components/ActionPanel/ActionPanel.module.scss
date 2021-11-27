@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    cursor: pointer;
+    color: white;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+}

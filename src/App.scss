@@ -6,9 +6,15 @@
 
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-areas:
+  'palette none   size'
+  'palette canvas size'
+  'palette panel  size';
+
   background: linear-gradient(to top right, rgba(53,46,115,1) 0%, rgba(67,105,152,1) 100%); ;
 
-  .sizecontrol-component, .canvas-component, .colorpalette-component {
+  .drawing-component {
     align-self: center;
 
     //Courtetsy of https://hype4.academy/tools/glassmorphism-generator
@@ -17,17 +23,32 @@
     backdrop-filter: blur( 1rem );
     border-radius: 1rem;
     border: 1px solid rgba( 0, 0, 0, 0.18 );
+    transition: box-shadow .250s;
+
+    &:hover {
+      box-shadow: 0 5px 35px 0 rgba( 31, 38, 135, 0.75 );
+    }
   }
 
   .sizecontrol-component {
+    grid-area: size;
     justify-self: left;
   }
 
   .canvas-component {
+    grid-area: canvas;
     justify-self: center;
   }
 
   .colorpalette-component {
+    grid-area: palette;
     justify-self: right;
+  }
+
+  .actionpanel-component {
+    grid-area: panel;
+    align-self: flex-start;
+    justify-self: center;
+    width: 75%;
   }
 }
