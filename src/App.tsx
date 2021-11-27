@@ -11,12 +11,8 @@ export default function App() {
   const [ size, setSize ] = useState(20)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  //Responsiveness be damned (Just for this project tho)
-  const width = Math.round(window.innerWidth * 0.4)
-  const height = Math.round(window.innerHeight * 0.5)
-
   return (
-    <DrawingContextProvider value={{ width, height, color, setColor, size, setSize, canvasRef }}>
+    <DrawingContextProvider value={{ width: 750, height: 500, color, setColor, size, setSize, canvasRef }}>
       <ColorPalette />
       <Canvas />
       <SizeControl />
