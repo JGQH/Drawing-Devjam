@@ -1,11 +1,12 @@
 import React, { MouseEvent } from 'react'
 import useCanvas from '@Hooks/useCanvas'
 import useDrawingContext from '@Hooks/useDrawingContext'
+import BrushesList from '@Components/BrushesList'
 import styles from './Canvas.module.scss'
 
 export default function Canvas() {
   const className = ['canvas-component', 'drawing-component', styles.container].join(' ')
-  const { width:realWidth, height:realHeight , color, size, canvasRef } = useDrawingContext()
+  const { width:realWidth, height:realHeight , color, size, canvasRef, brushType } = useDrawingContext()
   const [ lastPosition, mouseIsDown, setMouseUp, setMouseDown ] = useCanvas()
 
   function onDraw(e:MouseEvent<HTMLCanvasElement>){
@@ -20,21 +21,9 @@ export default function Canvas() {
     const context = canvas.getContext('2d')
 
     if(context) { //If the context is stablished, draw a circle and update last drawn point
-      context.fillStyle = color
-      context.beginPath()
-      context.arc(x, y, size / 2, 0, 2 * Math.PI, true)
-      context.closePath()
-      context.fill()
+      const drawFunction = BrushesList[brushType]
 
-      if(lastPosition.current) { //If there was a last drawn point, draw a line from it to the current point
-        context.beginPath()
-        context.strokeStyle = color
-        context.lineWidth = size
-        context.moveTo(lastPosition.current.x, lastPosition.current.y)
-        context.lineTo(x, y)
-        context.closePath()
-        context.stroke()
-      }
+      drawFunction(context, color, size, x, y, lastPosition.current)
 
       lastPosition.current = { x, y }
     }

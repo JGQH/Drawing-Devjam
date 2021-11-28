@@ -6,19 +6,20 @@
 
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-template-areas:
   'palette none   size'
   'palette canvas size'
-  'palette panel  size';
+  'palette canvas brush'
+  'palette panel  brush';
 
   background: linear-gradient(to top right, rgba(53,46,115,1) 0%, rgba(67,105,152,1) 100%); ;
 
   .drawing-component {
     align-self: center;
 
-    //Courtetsy of https://hype4.academy/tools/glassmorphism-generator
-    background: rgba( 0, 0, 0, 0.05 );
+    //Courtesy of https://hype4.academy/tools/glassmorphism-generator
+    background: rgba(255,255,255, 0.05 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 1rem );
     border-radius: 1rem;
@@ -30,8 +31,15 @@
     }
   }
 
+  .brushpalette-component {
+    grid-area: brush;
+    align-self: flex-start;
+    justify-self: left;
+  }
+
   .sizecontrol-component {
     grid-area: size;
+    align-self: flex-end;
     justify-self: left;
   }
 

@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react'
 import type { Dispatch, SetStateAction, RefObject } from 'react'
+import type { BrushListKey } from '@Components/BrushesList'
 
 interface DrawingContextInterface {
   width: number
@@ -9,6 +10,8 @@ interface DrawingContextInterface {
   size: number
   setSize: Dispatch<SetStateAction<number>>
   canvasRef: RefObject<HTMLCanvasElement>
+  brushType: BrushListKey
+  setBrushType: Dispatch<SetStateAction<BrushListKey>>
 }
 
 const DrawingContext = createContext<DrawingContextInterface>({} as DrawingContextInterface) //The values are set as soon as the website starts anyway

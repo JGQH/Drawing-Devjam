@@ -21,7 +21,8 @@
         "src/components/Canvas/*",
         "src/components/ColorPalette/*",
         "src/components/SizeControl/*",
-        "src/components/ActionPanel/*"
+        "src/components/ActionPanel/*",
+        "src/components/BrushPalette/*"
       ],
       "@Hooks/*":[
         "src/hooks/*"
