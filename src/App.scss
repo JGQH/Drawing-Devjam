@@ -8,7 +8,7 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 2fr 2fr 1fr;
   grid-template-areas:
-  'palette none   size'
+  'palette title  size'
   'palette canvas size'
   'palette canvas brush'
   'palette panel  brush';
@@ -29,6 +29,12 @@
     &:hover {
       box-shadow: 0 5px 35px 0 rgba( 31, 38, 135, 0.75 );
     }
+  }
+
+  .titleholder-component {
+    grid-area: title;
+    align-self: flex-end;
+    justify-self: center;
   }
 
   .brushpalette-component {

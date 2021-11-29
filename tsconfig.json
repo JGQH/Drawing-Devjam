@@ -22,7 +22,8 @@
         "src/components/ColorPalette/*",
         "src/components/SizeControl/*",
         "src/components/ActionPanel/*",
-        "src/components/BrushPalette/*"
+        "src/components/BrushPalette/*",
+        "src/components/TitleHolder/*"
       ],
       "@Hooks/*":[
         "src/hooks/*"

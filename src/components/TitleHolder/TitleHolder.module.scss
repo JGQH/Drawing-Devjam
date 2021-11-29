@@ -1,0 +1,20 @@
+.container {
+  padding: 1rem;
+  width: 80%;
+
+  input {
+    width: 100%;
+    color: white;
+    text-align: center;
+    background: none;
+    border: none;
+    border-radius: 1rem;
+    font-size: 2rem;
+
+    transition: background .25s;
+    &:focus {
+      outline: none;
+      background: #0002;
+    }
+  }
+}

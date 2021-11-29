@@ -3,7 +3,7 @@ import useDrawingContext from '@Hooks/useDrawingContext'
 import styles from './ActionPanel.module.scss'
 
 export default function ActionPanel() {
-  const { width, height, canvasRef } = useDrawingContext()
+  const { width, height, canvasRef, drawingTitle } = useDrawingContext()
   const className = ['actionpanel-component', styles.container].join(' ')
   
   function clearCanvas() {
@@ -22,7 +22,7 @@ export default function ActionPanel() {
 
       const link = document.createElement('a')
       link.href = image
-      link.download = 'drawing-app.png'
+      link.download =  drawingTitle.current + '.png'
       link.click()
     }
   }
