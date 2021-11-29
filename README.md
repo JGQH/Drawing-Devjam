@@ -18,7 +18,9 @@ This project is a project from [app-ideas](https://github.com/rickywid/app-ideas
 ##### \*Data can be found in **package.json** file
 
 ## Illustrations
-*\*WIP\**
+| Screenshot |
+|:---:|
+|![Screenshot](./public/readme.png)|
 
 ## To-Do
 - Styling
